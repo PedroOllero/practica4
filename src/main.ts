@@ -10,19 +10,20 @@ const boardNumber = document.getElementById('numero-turno') as any;
 
 function boardNumberHandler(){
     let orderNumber: number = 0;
-    const orderString: string = orderNumber.toString();
-    boardNumber.innerHTML = `${orderString}`;
 
+    const impressHandler = (newOrder: number) =>{
+        const orderString: string = newOrder.toString();
+         boardNumber.innerHTML = `${orderString}`;
+    }   
+    
     nextButton.addEventListener('click', () =>{
         orderNumber++;
-        const orderString: string = orderNumber.toString();
-        boardNumber.innerHTML = `${orderString}`;
+        impressHandler(orderNumber);
     })
 
     backButton.addEventListener('click', () =>{
         orderNumber--;
-        const orderString: string = orderNumber.toString();
-        boardNumber.innerHTML = `${orderString}`;
+        impressHandler(orderNumber);
     })
 
 
