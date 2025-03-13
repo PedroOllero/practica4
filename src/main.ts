@@ -16,7 +16,6 @@ const boardNumber = document.getElementById("numero-turno") as any;
 let orderNumber: number = 0;
 
 function boardNumberHandler() {
-
   const impressHandler = (newOrder: number) => {
     const orderString: string = newOrder.toString().padStart(2, "0");
     boardNumber.innerHTML = `${orderString}`;
@@ -24,9 +23,14 @@ function boardNumberHandler() {
 
   submitButton.addEventListener("click", (event) => {
     event.preventDefault();
-    let newOrder = parseInt(textInput.value);
-    orderNumber = newOrder
-    impressHandler(orderNumber);
+    let newOrder: number = parseInt(textInput.value);
+
+    if (newOrder > 0) {
+      orderNumber = newOrder;
+      impressHandler(orderNumber);
+    } else {
+      alert("El turno debe ser un numero mayor que 0");
+    }
   });
 
   nextButton.addEventListener("click", () => {
@@ -35,20 +39,18 @@ function boardNumberHandler() {
   });
 
   backButton.addEventListener("click", () => {
-    if(orderNumber > 0){
-        orderNumber--;
-    impressHandler(orderNumber);
-    } else{
-        alert("No puede haber un turno menor de 0")
+    if (orderNumber > 0) {
+      orderNumber--;
+      impressHandler(orderNumber);
+    } else {
+      alert("No puede haber un turno menor de 0");
     }
-    
   });
 
   resetButton.addEventListener("click", () => {
     orderNumber = 0;
     impressHandler(orderNumber);
   });
-
 }
 
 boardNumberHandler();
