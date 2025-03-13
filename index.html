@@ -10,28 +10,28 @@
   </head>
   <body>
     <div class="turno-display">
-      <h1 class="numero-turno">01</h1>
+      <h1 id="numero-turno"></h1>
       <p class="texto-turno">Por favor, acérquese al mostrador</p>
     </div>
 
     <div class="mando">
       <div class="mando__principal">
         <div class="principal__contenedores">
-          <button class="contenedores__botones botones__reset">Reset</button>
+          <button class="contenedores__botones" id="botones__reset">Reset</button>
         </div>
         <div class="principal__contenedores">
-          <button class="contenedores__botones botones__anterior">Anterior</button>
+          <button class="contenedores__botones" id="botones__anterior">Anterior</button>
         </div>
         <div class="principal__contenedores">
-          <button class="contenedores__botones botones__siguiente">Siguiente</button>
+          <button class="contenedores__botones" id="botones__siguiente">Siguiente</button>
         </div>
       </div>
 
       <div class="mando__secundario">
         <div class="secundario__contenedor">
           <form class="contenedor__form">
-            <input id="turno" class="form__input" placeholder="Inserte un número de turno"/>
-            <button type="submit" class="form__button">Aceptar</button>
+            <input id="form__input" placeholder="Inserte un número de turno"/>
+            <button type="submit" id="form__button">Aceptar</button>
           </form>
         </div>
       </div>
