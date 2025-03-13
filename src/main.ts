@@ -26,6 +26,11 @@ function boardNumberHandler(){
         impressHandler(orderNumber);
     })
 
+    backButton.addEventListener('click', () =>{
+        orderNumber--;
+        impressHandler(orderNumber);
+    })
+
 
 
 }
