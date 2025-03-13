@@ -1,4 +1,16 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 200px;
+
+}
+
 .turno-display {
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,3 +34,70 @@
   margin: 0;
   text-align: center;
 }
+
+.mando{
+  width: 60%;
+  background-color: #424242;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.mando__principal{
+  width: 80%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #222;
+}
+
+.contenedores__botones{
+  all: unset;
+  width: 80px;
+  height: 60px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 300ms linear;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.contenedores__botones:hover{
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.botones__reset{
+  background-color: rgb(131, 47, 47);
+}
+.botones__reset:hover{
+  background-color: rgb(175, 35, 35);
+}
+
+.botones__anterior{
+  background-color: rgb(131, 93, 47);
+}
+
+.botones__anterior:hover{
+  background-color: rgb(181, 120, 45);
+
+}
+
+.botones__siguiente{
+  background-color: rgb(26, 88, 42);
+  width: 120px;
+}
+
+.botones__siguiente:hover{
+  background-color: rgb(34, 135, 59);
+}
+
