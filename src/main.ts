@@ -1,56 +1,66 @@
-const resetButton = document.getElementById(
-  "botones__reset"
-) as HTMLButtonElement;
-const backButton = document.getElementById(
-  "botones__anterior"
-) as HTMLButtonElement;
-const nextButton = document.getElementById(
-  "botones__siguiente"
-) as HTMLButtonElement;
-const textInput = document.getElementById("form__input") as HTMLInputElement;
-const submitButton = document.getElementById(
-  "form__button"
-) as HTMLButtonElement;
-const boardNumber = document.getElementById("numero-turno") as any;
-
 let orderNumber: number = 0;
 
-function boardNumberHandler() {
-  const impressHandler = (newOrder: number) => {
-    const orderString: string = newOrder.toString().padStart(2, "0");
-    boardNumber.innerHTML = `${orderString}`;
-  };
+const submitButtonHandler = () => {
+  const submitButton = document.getElementById("form__button");
+  const textInput = document.getElementById("form__input");
+  if (submitButton instanceof HTMLButtonElement && textInput instanceof HTMLInputElement) {
+    submitButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      let newOrder: number = parseInt(textInput.value);
+      if (newOrder > 0) {
+        orderNumber = newOrder;
+        impressHandler(orderNumber);
+      } else {
+        alert("El turno debe ser un numero mayor que 0");
+      }
+    });
+  }
+};
 
-  submitButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    let newOrder: number = parseInt(textInput.value);
-
-    if (newOrder > 0) {
-      orderNumber = newOrder;
+const nextButtonHandler = () => {
+  const nextButton = document.getElementById("botones__siguiente");
+  if (nextButton instanceof HTMLButtonElement) {
+    nextButton.addEventListener("click", () => {
+      orderNumber++;
       impressHandler(orderNumber);
-    } else {
-      alert("El turno debe ser un numero mayor que 0");
-    }
-  });
+    });
+  }
+};
 
-  nextButton.addEventListener("click", () => {
-    orderNumber++;
-    impressHandler(orderNumber);
-  });
+const backButtonHandler = () => {
+  const backButton = document.getElementById("botones__anterior");
+  if (backButton instanceof HTMLButtonElement) {
+    backButton.addEventListener("click", () => {
+      if (orderNumber > 0) {
+        orderNumber--;
+        impressHandler(orderNumber);
+      } else {
+        alert("No puede haber un turno menor de 0");
+      }
+    });
+  }
+};
 
-  backButton.addEventListener("click", () => {
-    if (orderNumber > 0) {
-      orderNumber--;
+const resetButtonHandler = () => {
+  const resetButton = document.getElementById("botones__reset");
+  if (resetButton instanceof HTMLButtonElement) {
+    resetButton.addEventListener("click", () => {
+      orderNumber = 0;
       impressHandler(orderNumber);
-    } else {
-      alert("No puede haber un turno menor de 0");
-    }
-  });
+    });
+  }
+};
 
-  resetButton.addEventListener("click", () => {
-    orderNumber = 0;
-    impressHandler(orderNumber);
-  });
-}
+const impressHandler = (newOrder: number) => {
+  const boardNumber = document.getElementById("numero-turno") as any;
+  const orderString: string = newOrder.toString().padStart(2, "0");
+  boardNumber.innerHTML = `${orderString}`;
+};
 
-boardNumberHandler();
+document.addEventListener("DOMContentLoaded", () => {
+  impressHandler(0);
+  submitButtonHandler();
+  nextButtonHandler();
+  backButtonHandler();
+  resetButtonHandler();
+});
